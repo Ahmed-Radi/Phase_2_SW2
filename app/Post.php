@@ -3,9 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Nicolaslopezj\Searchable\SearchableTrait;
+class Post extends Model{
 
-class Post extends Model
-{
     //table name
     protected $table = 'posts';
     //primary key
@@ -13,9 +13,10 @@ class Post extends Model
     //timestamps
     public $timestamps = true;
 
+
     public function user(){
         return $this->belongsTo('App\User');
     }
 
-    
+
 }
