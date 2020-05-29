@@ -24,7 +24,7 @@
 
             <ul class="nav navbar-nav">
               <li><a href="/">Home</a></li>
-              <li><a href="/posts/create">Create a post</a></li>
+              <li><a href="/posts/create">Make A NEW Post</a></li>
 
               <li><a href="/posts">Blog</a></li>
             </ul>
@@ -42,6 +42,10 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+
+                            <li><a href="user/ {{Auth::user()->id}}">Profile</a></li>
+
+
 
 
                             <li>
