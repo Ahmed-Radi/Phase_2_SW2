@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'PagesController@index');
 
-
 Route::resource('posts', 'PostController');
 Auth::routes();
+
+Route::get('/user/{id}', 'UserController@profile');
+
 
 
