@@ -19,5 +19,9 @@ Auth::routes();
 
 Route::get('/user/{id}', 'UserController@profile');
 
+Route::get('edit/user', 'UserController@edit')->name('user.edit');
+Route::post('edit/user', 'UserController@update')->name('user.update');
+
+
 
 
