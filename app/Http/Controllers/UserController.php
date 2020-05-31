@@ -63,6 +63,35 @@ class UserController extends Controller
 
 
     }
+    public function passwordEdit(){
+        if(Auth::user()){
+            return view('users.password');
+        }else{
+            return redirect()->back();
+        }
+    }
 
+
+
+    public function passwordUpdate(Request $request){
+        $validate = $request->validate([
+            'oldPassword'=>'required|min:7',
+            'password'=>'required|min:7|required_with:password_confirmation'
+        ]);
+
+        $user = User::find(Auth::user()->id);
+        if($user) {
+            if(Hash::check($request['oldPassword'], $user->password) && $validate){
+                $user->password = Hash::make($request['password']);
+
+                $user->save();
+                $request->session()->flash('success', 'Your password have been updated!');
+                return redirect()->back();
+            }else{
+                $request->session()->flash('error', 'Your current password did not match the entered password');
+                return redirect()->route('password.edit');
+            }
+        }
+    }
 
 }
